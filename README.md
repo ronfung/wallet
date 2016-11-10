@@ -8,7 +8,7 @@ PayMo is a "digital wallet" company called PayMo that allows users to easily req
 
 ## Design Summary
 
-We need to find 4th degree of connections in a most efficient matters.  Also, anticipate that the code can be run in paraellel, distributed algorithm on a cluster, where the processing and generating of data can doney simultaneously.  The code uses divide and conquer, hashmap like data structure to cache results for subsequent lookup.
+We need to find 4th degree of connections in a most efficient matters. Also, anticipate that the code can be run in parallel, distributed algorithm on a cluster, where the processing and generating of data can done simultaneously. The code uses divide and conquer, hash-map like data structure to cache results for subsequent lookup.
 
 ## Details of Implementation
 
@@ -22,12 +22,11 @@ In the above diagram, payments have transpired between User
 * D and E 
 * E and F
 
-The code first build the 1st degree of connections (transactions) of the batch dataset, store them in a hashmap with key, pair value.  The key is the userid and the value is the set of id being connected.
+The code first build the 1st degree of connections (transactions) of the batch dataset, store them in a hash-map with key, pair value. The key is the userid and the value is the set of id being connected.
 
-Once the dataset parse commplete, we can run thru the streaming dataset.  Lookup if they are first degree connected.
-For 2nd degree connections, we first lookup if they are 1st degree connected, if not, we can lookup the 2nd degree connections for both IDs, if the value, i.e. the set of IDs being cached in the hashmap, check to see if A's id is in Set B or B's ids is in Set A.  If the set of IDs does not exists in the hashmaps, build it.  It is build by union of set of the 1st degree connects' connections and the id of the 1st degree connection set.  Cache the findings in the hashmap so that subsequent lookup can be done with building the set again.
+Once the dataset parse complete, we can run thru the streaming dataset. Lookup if they are first degree connected. For 2nd degree connections, we first lookup if they are 1st degree connected, if not, we can lookup the 2nd degree connections for both IDs, if the value, i.e. the set of IDs being cached in the hashmap, check to see if A's id is in Set B or B's ids is in Set A. If the set of IDs does not exists in the hash maps, build it. It is build by union of set of the 1st degree connects' connections and the id of the 1st degree connection set. Cache the findings in the hash-map so that subsequent lookup can be done with building the set again.
 
-For 4th degree, repeat the process, do 1st degree lookup, 2nd degree lookup, and both turn negative, check if they are 4th degree connected.  The way to do it is to check if A's id in in B's 2nd connection set or B's id in A's 2nd connection set.  Also, check if both id's 2nd degree connection set intersect each other.
+For 4th degree, repeat the process, do 1st degree lookup, 2nd degree lookup, and both turn negative, check if they are 4th degree connected. The way to do it is to check if A's id in in B's 2nd connection set or B's id in A's 2nd connection set. Also, check if both id's 2nd degree connection set intersect each other.
 
 [Back to Table of Contents] (README.md#table-of-contents)
 
