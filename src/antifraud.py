@@ -16,6 +16,7 @@ class PayMo:
   def parse_trans(self, list_of_tuple):
     """
     parse all input tuple and store the 1st degree of connections
+    perform data ingestion
 
         :type List[tuple(int)]
         :rtype: None
