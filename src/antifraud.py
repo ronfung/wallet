@@ -26,7 +26,7 @@ class PayMo:
 
   def get_second_degree_connection(self, n):
     """
-    parse all input tuple and store the 1st degree of connections
+    parse all input tuple and store the 2nd degree of connections
 
         :type int - id n
         :rtype: Set of 2nd degree of connections for input id n
@@ -48,7 +48,7 @@ class PayMo:
 
   def verify_transaction_first_degree(self, a, b):
     """
-    Return whether a and b is first degree connected
+    Return whether a and b are first degree connected
 
         :type int - a, b
         :rtype: boolean
@@ -57,7 +57,7 @@ class PayMo:
 
   def verify_transaction_second_degree(self, a, b):
     """
-    Return whether a and b is second degree connected
+    Return whether a and b are second degree connected
 
         :type int - a, b
         :rtype: boolean
@@ -68,7 +68,7 @@ class PayMo:
 
   def verify_transaction_forth_degree(self, a, b):
     """
-    Return whether a and b is forth degree connected
+    Return whether a and b are forth degree connected
 
         :type int - a, b
         :rtype: boolean
